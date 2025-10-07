@@ -1,0 +1,3 @@
+-- Placeholder for initial schema/seed
+-- CREATE TABLE accounts (...);
+-- CREATE TABLE transactions (...);
