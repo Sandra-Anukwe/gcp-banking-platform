@@ -1,8 +1,8 @@
-# GCP Banking Platform 💳
+# GCP Banking Platform 
 
 A simulated online banking platform built on **Google Cloud** to demonstrate secure, scalable architecture and real-world DevOps practices.
 
-## 🔭 Overview
+##  Overview
 This project showcases:
 - Cloud-native **API** (Python/Flask) packaged with Docker
 - Deployment to **Cloud Run** (serverless) with zero-maintenance scaling
@@ -15,7 +15,7 @@ This project showcases:
 
 ---
 
-## 🏗️ Architecture (MVP)
+## Architecture (MVP)
 - **Client:** (future) Web UI or Postman
 - **Service:** Flask API container on **Cloud Run**
 - **Data:** **Cloud SQL (PostgreSQL)** via SQL connector
@@ -26,7 +26,7 @@ See: [`docs/architecture.md`](docs/architecture.md)
 
 ---
 
-## 🚀 Quickstart (Local)
+## Quickstart (Local)
 **Requirements:** Python 3.10+, Git, Docker (optional)
 
 ```bash
@@ -55,7 +55,7 @@ docker run -p 8080:8080 gcp-banking-platform:dev
 
 ---
 
-## ☁️ Deploy to Cloud Run (sample flow)
+## Deploy to Cloud Run (sample flow)
 > Ensure you have gcloud CLI installed and are logged in to the correct project.
 
 ```bash
@@ -77,7 +77,7 @@ gcloud run deploy gcp-banking-platform \
 
 ---
 
-## 🗂️ Repo Structure
+## Repo Structure
 ```
 gcp-banking-platform/
 ├─ README.md
@@ -99,7 +99,7 @@ gcp-banking-platform/
 
 ---
 
-## 🧭 Roadmap
+## Roadmap
 - [ ] Add `/accounts`, `/transactions` endpoints
 - [ ] Integrate **Cloud SQL** with secure connector
 - [ ] Configure secrets (DB URL) via **Secret Manager**
@@ -109,12 +109,12 @@ gcp-banking-platform/
 
 ---
 
-## 🔒 Security Notes
+##  Security Notes
 - Use **least privilege** IAM for the Cloud Run service account
 - Never commit secrets – use **Secret Manager** and `.env` locally
 - Add **VPC egress** and private IP for Cloud SQL in production
 
 ---
 
-## 📄 License
+##  License
 MIT © 2025 Sandra Anukwe
