@@ -116,5 +116,7 @@ gcp-banking-platform/
 
 ---
 
+✅ Auto-deploy test via Cloud Build – triggered by Sandra Anukwe
+
 ##  License
 MIT © 2025 Sandra Anukwe
