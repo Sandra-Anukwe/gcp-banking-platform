@@ -1,33 +1,23 @@
-cat > cloudbuild.yaml <<'EOF'
-# Build from source and deploy to Cloud Run, wired to Cloud SQL + Secrets
 steps:
-- name: gcr.io/google.com/cloudsdktool/cloud-sdk
-  entrypoint: bash
-  args:
-    - -lc
-    - |
-      set -euo pipefail
-      gcloud config set project "$PROJECT_ID"
-
-      REGION="europe-west2"
-      SERVICE="banking-web"
-      INSTANCE="banking-sql"
-      SA="850076514657-compute@developer.gserviceaccount.com"
-
-      echo "Fetching Cloud SQL connection name..."
-      CONN=$(gcloud sql instances describe "$INSTANCE" --format='value(connectionName)')
-
-      echo "Deploying $SERVICE to Cloud Run in $REGION"
-      gcloud run deploy "$SERVICE" \
-        --source . \
-        --region "$REGION" \
-        --allow-unauthenticated \
-        --service-account "$SA" \
-        --add-cloudsql-instances "$CONN" \
-        --set-env-vars "DB_HOST=/cloudsql/$CONN" \
-        --set-secrets "DB_PASSWORD=DB_PASSWORD:latest,DB_USER=DB_USER:latest,DB_NAME=DB_NAME:latest"
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        set -e
+        echo "Deploying Cloud Run service..."
+        REGION="europe-west2"
+        SERVICE="banking-web"
+        INSTANCE="banking-sql"
+        SA="850076514657-compute@developer.gserviceaccount.com"
+        CONN=$(gcloud sql instances describe "$INSTANCE" --format='value(connectionName)')
+        gcloud run deploy "$SERVICE" \
+          --source . \
+          --region "$REGION" \
+          --allow-unauthenticated \
+          --service-account "$SA" \
+          --add-cloudsql-instances "$CONN" \
+          --set-env-vars "DB_HOST=/cloudsql/$CONN"
 
 options:
   logging: CLOUD_LOGGING_ONLY
-EOF
-
