@@ -3,23 +3,15 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.egg-info/
 .venv/
-.env
-.env.*
-dist/
-build/
-
+env/
+venv/
+*.env
 # OS
 .DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Images/output
-*.png
-*.jpg
-*.jpeg
-*.svg
+# Git / build
+.git/
+# Node (if ever added)
+node_modules/
+# Docker
+**/.dockerignore
