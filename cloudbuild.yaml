@@ -2,7 +2,8 @@ substitutions:
   _REGION: europe-west2
   _REPO: gcp-banking
   _SERVICE: banking-api
-  _IMAGE: ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/app:latest
+  _IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/app:latest
+
 
 steps:
   - name: gcr.io/cloud-builders/docker
