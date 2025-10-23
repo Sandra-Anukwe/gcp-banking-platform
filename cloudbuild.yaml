@@ -6,17 +6,22 @@ substitutions:
 
 steps:
   - name: gcr.io/cloud-builders/docker
-    args: ["build", "-t", "${_IMAGE}", "."]
+    args: ['build', '-t', '${_IMAGE}', '.']
 
   - name: gcr.io/cloud-builders/docker
-    args: ["push", "${_IMAGE}"]
+    args: ['push', '${_IMAGE}']
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: gcloud
-    args: ["run","deploy","${_SERVICE}",
-           "--image","${_IMAGE}",
-           "--region","${_REGION}",
-           "--allow-unauthenticated"]
+    args: ['run', 'deploy', '${_SERVICE}',
+           '--image', '${_IMAGE}',
+           '--region', '${_REGION}',
+           '--allow-unauthenticated']
 
 images:
   - ${_IMAGE}
+
+# Send build logs to your GCS bucket (required because a user-managed SA is used)
+logsBucket: gs://gcp-banking-platform-cloudbuild-logs
+options:
+  logging: GCS_ONLY
